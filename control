@@ -1,0 +1,9 @@
+Package: com.rephorm.pass
+Name: Pass
+Depends:  gnupg
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: iOS app to access your password-store 
+Maintainer: rephorm
+Author: rephorm
+Section: Utilities
