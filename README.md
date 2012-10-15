@@ -8,6 +8,8 @@ View your [password-store][] passwords on your iDevice.
 Dependencies
 ------------
 
+The following packages are available from Cydia:
+
   * gnupg  (required)
   * git    (optional)
 
@@ -49,20 +51,28 @@ Clicking on the name or password box will copy the respective contents to the pa
 Todo
 ----
 
-* It would be nice to store the passphrase in the iOS Keychain (for some configurable amount of time) so that it doesn't have to be entered every time.
+* Simplify initial setup
 
-* Reset pasteboard contents after 45 s.
+  - enter git repo url to clone
+  - paste gpg key
+
+* Better details screen
+  - allow viewing multi-line content
+  - auto-decrypt if passphrase stored?
+
+* Allow storing gpg key passphrase in iOS Keychain
+
+* Reset pasteboard contents after 45 s when copying password.
 
 * Configurable Settings
 
   - base directory location (other than /var/mobile/.password-store)
-  - store passphrase in keychain
-  - storage duration (X minutes or forever)
+  - whether to store passphrase in keychain
+  - passphrase storage duration (X minutes or forever)
   - pasteboard reset time
 
-* password editing
+* Password editing / adding
+  - auto-commit ala pass bash script
 
 * trigger 'git pull' from app (also 'git push' after editing is implemented)
-* gpg key import?
-
 * dropbox support?
