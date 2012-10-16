@@ -16,7 +16,7 @@ The following packages are available from Cydia:
 Setup
 -----
 
-### Copy your `pass` passwords-store to /var/mobile/.password-store
+### Copy your `pass` password-store to /var/mobile/.password-store
 
 The preferred way to do this is to store your passwords in a `git` repository, which you can then clone. Alternatively, you can use scp, iFile or any other method to transfer the passwords over.
 
