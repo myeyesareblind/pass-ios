@@ -16,11 +16,11 @@ The following packages are available from Cydia:
 Setup
 -----
 
-## Copy your `pass` passwords-store to /var/mobile/.password-store
+### Copy your `pass` passwords-store to /var/mobile/.password-store
 
 The preferred way to do this is to store your passwords in a `git` repository, which you can then clone. Alternatively, you can use scp, iFile or any other method to transfer the passwords over.
 
-## Set up your gpg key
+### Set up your gpg key
 
 1) Export your *private* key from your desktop/laptop/etc:
 
@@ -38,7 +38,7 @@ The preferred way to do this is to store your passwords in a `git` repository, w
 
     (device)$ gpg -d ~/.password-store/ENTRY.gpg
 
-## Using the Pass App
+### Using the Pass App
 
 After launching the app, you will be presented with a listing of files and directories in `~/.password-store`. Files starting with '.' are hidden, and `.gpg` extensions are stripped.
 
