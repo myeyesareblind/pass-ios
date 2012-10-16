@@ -61,6 +61,7 @@ Todo
   - auto-decrypt if passphrase stored?
 
 * Allow storing gpg key passphrase in iOS Keychain
+  - this is partially done. passphrase is stored until app exits for now
 
 * Reset pasteboard contents after 45 s when copying password.
 
