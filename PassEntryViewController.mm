@@ -1,5 +1,6 @@
 #import "PassEntryViewController.h"
 #import "PassEntry.h"
+#import "PDKeychainBindings.h"
 
 @interface UIAlertView()
 - (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
@@ -13,6 +14,7 @@
 - (void)requestPassphrase;
 - (void)copyName;
 - (BOOL)copyPass;
+- (PDKeychainBindings *)keychain;
 
 @end
   
@@ -20,6 +22,10 @@
 @implementation PassEntryViewController
 @synthesize entry;
 @synthesize passphrase;
+
+- (PDKeychainBindings *)keychain {
+  return [PDKeychainBindings sharedKeychainBindings];
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -66,7 +72,12 @@
       [self copyName];
       break;
     case 1:
-      [self requestPassphrase];
+      self.passphrase = [[self keychain] stringForKey:@"passphrase"];
+      if (self.passphrase == nil) {
+        [self requestPassphrase];
+      } else {
+        [self copyPass];
+      }
       break;
     default:
       break;
@@ -80,6 +91,8 @@
 - (BOOL)copyPass {
   NSString *pass = [self.entry passWithPassphrase:self.passphrase];
   if (pass == nil) {
+    [[self keychain] removeObjectForKey:@"passphrase"];
+
     return NO;
   } else {
     [UIPasteboard generalPasteboard].string = pass;
@@ -96,6 +109,8 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) {
     self.passphrase = [alertView textFieldAtIndex:0].text;
+    [[self keychain] setObject:self.passphrase forKey:@"passphrase"];
+
     NSLog(@"Passphrase: %@", self.passphrase);
     if (![self copyPass]) {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Passphrase" message:@"Passphrase invalid" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];

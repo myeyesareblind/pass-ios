@@ -1,5 +1,6 @@
 #import "PasswordsViewController.h"
 #import "PassDataController.h"
+#import "PDKeychainBindings.h"
 
 #define PASS_DIR @"/var/mobile/.password-store"
 
@@ -26,6 +27,12 @@
 	//[_window addSubview:_viewController.view];
 	[_window addSubview:navigationController.view];
 	[_window makeKeyAndVisible];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+  // remove passphrase on app exit for now
+  NSLog(@"App will terminate");
+  [[PDKeychainBindings sharedKeychainBindings] removeObjectForKey:@"passphrase"];
 }
 
 - (void)dealloc {
