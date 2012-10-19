@@ -42,11 +42,19 @@ The preferred way to do this is to store your passwords in a `git` repository, w
 
 After launching the app, you will be presented with a listing of files and directories in `~/.password-store`. Files starting with '.' are hidden, and `.gpg` extensions are stripped.
 
+![Main Screen](https://raw.github.com/rephorm/pass-ios/screenshots/screenshots/1_main_screen.png)
+
 Clicking on a directory will show its contents.
+
+![Subdirectory Listing](https://raw.github.com/rephorm/pass-ios/screenshots/screenshots/2_subdir.png)
 
 Clicking on a password file will show a screen with the password file details (name and \*'d out password).
 
+![Subdirectory Listing](https://raw.github.com/rephorm/pass-ios/screenshots/screenshots/3_entry.png)
+
 Clicking on the name or password box will copy the respective contents to the pasteboard (clipboard). Since the password is encrypted, you will have to enter you passphrase before it can be copied.
+
+![Subdirectory Listing](https://raw.github.com/rephorm/pass-ios/screenshots/screenshots/4_gpg.png)
 
 Todo
 ----
