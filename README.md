@@ -1,6 +1,8 @@
 Pass for iOS
 ============
 
+![Icon](https://raw.github.com/rephorm/pass-ios/master/Resources/Icon.png)
+
 View your [password-store][] passwords on your iDevice.
 
 [password-store]: http://zx2c4.com/projects/password-store
