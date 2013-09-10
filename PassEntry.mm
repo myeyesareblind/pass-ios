@@ -29,6 +29,8 @@
 
   NSPipe *opipe = [NSPipe pipe];
   [task setStandardOutput:opipe];
+    NSPipe *erroPipe = [NSPipe pipe];
+  [task setStandardError:erroPipe];
 
   [task launch];
   [task waitUntilExit];
@@ -44,6 +46,10 @@
     // return first line of file 
     return [[str componentsSeparatedByString:@"\n"] objectAtIndex:0];
   } else {
+      NSFileHandle *ofile = [erroPipe fileHandleForReading];
+      NSData *data = [ofile readDataToEndOfFile];
+      NSString *str= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+      NSLog(@"error string: %@", str);
     // XXX handle error
     return nil;
   }

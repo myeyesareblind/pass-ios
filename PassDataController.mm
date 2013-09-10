@@ -45,7 +45,8 @@
     if (dent->d_name[0] == '.') continue; // skip hidden files
 
     entry = [[PassEntry alloc] init];
-    entry.name = [NSString stringWithCString:dent->d_name];
+    entry.name = [[NSString alloc] initWithCString:dent->d_name
+                                          encoding:NSUTF8StringEncoding];
     entry.path = [NSString stringWithFormat:@"%@/%s", path, dent->d_name];
     entry.is_dir = (dent->d_type == DT_DIR ? YES : NO);
 

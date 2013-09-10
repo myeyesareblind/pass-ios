@@ -8,11 +8,6 @@
 #import "PassEntry.h"
 #import "PDKeychainBindings.h"
 
-@interface UIAlertView()
-- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;
-@property (nonatomic,assign) unsigned alertViewStyle;
-@end
-
 @interface PassEntryViewController()
 
 @property (nonatomic,retain) NSString *passphrase;
@@ -44,7 +39,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return 3;
+  return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,7 +103,7 @@
 
 - (void)requestPassphrase {
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Passphrase" message:@"Enter passphrase for gpg key" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-  alert.alertViewStyle = 1;
+  alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
   [alert show];
 }
 
@@ -116,8 +111,6 @@
   if (buttonIndex == 1) {
     self.passphrase = [alertView textFieldAtIndex:0].text;
     [[self keychain] setObject:self.passphrase forKey:@"passphrase"];
-
-    NSLog(@"Passphrase: %@", self.passphrase);
     if (![self copyPass]) {
       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Passphrase" message:@"Passphrase invalid" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
       [alert show];
